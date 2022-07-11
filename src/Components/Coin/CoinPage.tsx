@@ -1,6 +1,6 @@
 import Axios from "axios";
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 const CoinPage = () => {
   let { id } = useParams();
@@ -77,58 +77,11 @@ const CoinPage = () => {
                   $ {coin.market_data.low_24h.cad.toLocaleString()}
                 </p>
               </div>
-              <a href="/" className="btn btn-success col-1 offset-4">
-                Go Back
-              </a>
+              <Link to={"/crypto-checker"} className="btn btn-success col-1 offset-4">Go Back</Link>
             </div>
           </div>
         </div>
       </div>
-      // <div className="coinPage-Container">
-      //   <div className="coinPage-Info">
-      //     <h1>{coin.name}</h1>
-      //     <img src={coin.image.large} alt="Icon" className="coinPage-Icon" />
-      //     <div className="coinPage-Data">
-      //       <div className="coinPage-Row">
-      //         <h3 className="coinPage-RowHeader">Symbol:</h3>
-      //         <h3 className="coinPage-RowData">{coin.symbol}</h3>
-      //       </div>
-      //       <div className="coinPage-Row">
-      //         <h3 className="coinPage-RowHeader">Current Price:</h3>
-      //         <h3 className="coinPage-RowData">
-      //           $ {coin.market_data.current_price.cad.toLocaleString()}
-      //         </h3>
-      //       </div>
-      //       <div className="coinPage-Row">
-      //         <h3 className="coinPage-RowHeader">Market Cap:</h3>
-      //         <h3 className="coinPage-RowData">
-      //           $ {coin.market_data.market_cap.cad.toLocaleString()}
-      //         </h3>
-      //       </div>
-      //       <div className="coinPage-Row">
-      //         <h3 className="coinPage-RowHeader">Total Volume:</h3>
-      //         <h3 className="coinPage-RowData">
-      //           $ {coin.market_data.total_volume.cad.toLocaleString()}
-      //         </h3>
-      //       </div>
-      //       <div className="coinPage-Row">
-      //         <h3 className="coinPage-RowHeader">24hr High:</h3>
-      //         <h3 className="coinPage-RowData green">
-      //           $ {coin.market_data.high_24h.cad.toLocaleString()}
-      //         </h3>
-      //       </div>
-      //       <div className="coinPage-Row">
-      //         <h3 className="coinPage-RowHeader">24hr Low:</h3>
-      //         <h3 className="coinPage-RowData red">
-      //           $ {coin.market_data.low_24h.cad.toLocaleString()}
-      //         </h3>
-      //       </div>
-      //     </div>
-      //     <Link to="/">
-      //       <div className="coinPage-RouteButton">Go back</div>
-      //     </Link>
-      //   </div>
-      // </div>
     );
   } else {
     return null;
