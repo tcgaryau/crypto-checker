@@ -1,14 +1,17 @@
 import "../App.css";
 import Axios from "axios";
 import { useState, useEffect } from "react";
-import Coin from "./Coin/Coin";
+import CoinsView from "./Coin/CoinsView";
 import { ICoin } from "../Interfaces/ICoin";
 import Refresh from "../Images/refresh.png";
+import CoinPopup from "./Coin/CoinPopup";
 
 const Home = () => {
   const [coins, setCoins] = useState<ICoin[]>([]);
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [currentCoinId, setCurrentCoinId] = useState<string>(null!);
+  const [isCoinPopupVisible, setIsCoinPopupVisible] = useState<boolean>(false);
 
   useEffect(() => {
     refreshPage();
@@ -50,7 +53,7 @@ const Home = () => {
             onChange={handleSearch}
           />
         </div>
-        <div className="col-1 order-5">
+        <div className="col-1">
           <img
             onClick={refreshPage}
             src={Refresh}
@@ -59,43 +62,26 @@ const Home = () => {
         </div>
       </div>
 
-      <div className="coinContainer">
+      <div>
         {isLoading && (
           <div className="spinner-border text-success" role="status">
             <span className="visually-hidden">Loading...</span>
           </div>
         )}
         {filterCoins && (
-          <table className="table table-dark">
-            <thead>
-              <tr>
-                <th></th>
-                <th>Name</th>
-                <th>Symbol</th>
-                <th>CAD</th>
-                <th>Change</th>
-                <th>Mkt Cap</th>
-              </tr>
-            </thead>
-            <tbody>
-              {filterCoins.map((coin: ICoin) => {
-                return (
-                  <Coin
-                    key={coin.id}
-                    id={coin.id}
-                    icon={coin.image}
-                    coinName={coin.name}
-                    coinSymbol={coin.symbol}
-                    price={coin.current_price}
-                    marketCap={coin.market_cap}
-                    priceChange={coin.price_change_percentage_24h}
-                  />
-                );
-              })}
-            </tbody>
-          </table>
+          <CoinsView
+            filterCoins={filterCoins}
+            setCurrentCoinId={setCurrentCoinId}
+            setIsCoinPopupVisible={setIsCoinPopupVisible}
+          />
         )}
       </div>
+      <CoinPopup
+        currentCoinId={currentCoinId}
+        setCurrentCoinId={setCurrentCoinId}
+        isCoinPopupVisible={isCoinPopupVisible}
+        setIsCoinPopupVisible={setIsCoinPopupVisible}
+      ></CoinPopup>
     </div>
   );
 };
