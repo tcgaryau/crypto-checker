@@ -43,8 +43,8 @@ const Home = () => {
       <h1 className="text-center text-white">
         Welcome to Gary Au's CryptoChecker
       </h1>
-      <div className="row">
-        <div className="col-2 offset-md-4">
+      <div className="row container">
+        <div className="col-3 col-sm-3 col-md-2 offset-4">
           <input
             type="text"
             className="form-control bg-success"
