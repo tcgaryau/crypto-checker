@@ -28,7 +28,13 @@ const CoinsView = (props: ICoinProps) => {
         <tbody>
           {props.filterCoins.map((coin: ICoin) => {
             return (
-              <tr key={coin.id}>
+              <tr
+                key={coin.id}
+                onClick={() => {
+                  handleClick(coin.id);
+                }}
+                style={{ cursor: "pointer" }}
+              >
                 <td>
                   <img
                     src={coin.image}
@@ -49,16 +55,6 @@ const CoinsView = (props: ICoinProps) => {
                   </td>
                 )}
                 <td>{coin.market_cap.toLocaleString()}</td>
-                <td>
-                  <button
-                    className="btn btn-success"
-                    onClick={() => {
-                      handleClick(coin.id);
-                    }}
-                  >
-                    More Info
-                  </button>
-                </td>
               </tr>
             );
           })}

@@ -53,7 +53,7 @@ const CoinPopup = (props: ICoinPopupProps) => {
                 style={{ width: "50px", height: "50px" }}
               />
             </div>
-            <p className="h1 col-10">{`${
+            <p className="h3 col-10">{`${
               coin.name
             } (${coin.symbol.toUpperCase()})`}</p>
             <p className="h5 col-5">Current Price:</p>
