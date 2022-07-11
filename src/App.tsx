@@ -11,6 +11,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/CoinPage/:id" element={<CoinPage />} />
+          <Route path="/crypto-checker" element={<Home />} />
         </Routes>
       </Router>
     </div>
