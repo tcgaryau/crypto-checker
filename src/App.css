@@ -7,9 +7,21 @@ input[type="text"]::-webkit-input-placeholder {
 }
 
 .red {
-  color: #f00606
+  color: #f00606;
 }
 
 .green {
-  color: #11d811
+  color: #11d811;
+}
+
+@media only screen and (max-width: 505px) {
+  .table-wrapper .coin-popup-wrapper {
+    zoom: 80%;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .table-wrapper .coin-popup-wrapper {
+    zoom: 70%;
+  }
 }

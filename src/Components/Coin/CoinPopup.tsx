@@ -34,7 +34,7 @@ const CoinPopup = (props: ICoinPopupProps) => {
     return new Date(date).toDateString();
   };
   return (
-    <>
+    <div className="coin-popup-wrapper">
       {coin && (
         <Popup
           title={`${coin.name} (${coin.symbol.toUpperCase()})`}
@@ -87,7 +87,7 @@ const CoinPopup = (props: ICoinPopupProps) => {
           </div>
         </Popup>
       )}
-    </>
+    </div>
   );
 };
 

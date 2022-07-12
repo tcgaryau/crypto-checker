@@ -13,7 +13,7 @@ const CoinsView = (props: ICoinProps) => {
   };
 
   return (
-    <div className="table-responsive">
+    <div className="table-responsive table-wrapper">
       <table className="table table-dark">
         <thead>
           <tr>

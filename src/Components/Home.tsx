@@ -44,7 +44,7 @@ const Home = () => {
         Welcome to Gary's CryptoChecker
       </h1>
       <div className="row container">
-        <div className="col-3 col-sm-3 col-md-2 offset-4">
+        <div className="col-4 col-sm-4 col-md-3 offset-4">
           <input
             type="text"
             className="form-control bg-success"
