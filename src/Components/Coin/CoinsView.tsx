@@ -13,13 +13,12 @@ const CoinsView = (props: ICoinProps) => {
   };
 
   return (
-    <>
+    <div className="table-responsive">
       <table className="table table-dark">
         <thead>
           <tr>
             <th></th>
             <th>Name</th>
-            <th>Symbol</th>
             <th>CAD</th>
             <th>Change</th>
             <th>Mkt Cap</th>
@@ -42,8 +41,7 @@ const CoinsView = (props: ICoinProps) => {
                     alt=""
                   />
                 </td>
-                <td>{coin.name}</td>
-                <td>{coin.symbol.toUpperCase()}</td>
+                <td>{`${coin.name} (${coin.symbol.toUpperCase()})`}</td>
                 <td>$ {coin.current_price.toFixed(2)}</td>
                 {coin.price_change_percentage_24h < 0 ? (
                   <td className="red">
@@ -60,7 +58,7 @@ const CoinsView = (props: ICoinProps) => {
           })}
         </tbody>
       </table>
-    </>
+    </div>
   );
 };
 

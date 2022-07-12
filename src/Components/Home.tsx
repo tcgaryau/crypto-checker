@@ -41,7 +41,7 @@ const Home = () => {
   return (
     <div className="container">
       <h1 className="text-center text-white">
-        Welcome to Gary Au's CryptoChecker
+        Welcome to Gary's CryptoChecker
       </h1>
       <div className="row container">
         <div className="col-3 col-sm-3 col-md-2 offset-4">
