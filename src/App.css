@@ -15,13 +15,15 @@ input[type="text"]::-webkit-input-placeholder {
 }
 
 @media only screen and (max-width: 505px) {
-  .table-wrapper .coin-popup-wrapper {
+  .table-wrapper,
+  .coin-popup-wrapper {
     zoom: 80%;
   }
 }
 
 @media only screen and (max-width: 400px) {
-  .table-wrapper .coin-popup-wrapper {
+  .table-wrapper,
+  .coin-popup-wrapper {
     zoom: 70%;
   }
 }
