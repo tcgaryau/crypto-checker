@@ -3,6 +3,21 @@
 }
 
 input[type="text"]::-webkit-input-placeholder {
+  /* WebKit, Blink, Edge */
+  color: white;
+}
+input[type="text"]:-moz-placeholder {
+  /* Mozilla Firefox 4 to 18 */
+  color: white;
+  opacity: 1;
+}
+input[type="text"]::-moz-placeholder {
+  /* Mozilla Firefox 19+ */
+  color: white;
+  opacity: 1;
+}
+input[type="text"]:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
   color: white;
 }
 
@@ -17,6 +32,10 @@ input[type="text"]::-webkit-input-placeholder {
 @media only screen and (max-width: 505px) {
   .table-wrapper,
   .coin-popup-wrapper {
+    -moz-transform: scale(0.78);
+    -webkit-transform: scale(0.78);
+    -o-transform: scale(0.78);
+    -ms-transform: scale(0.78);
     transform: scale(0.78);
     transform-origin: 0 0;
   }
@@ -25,6 +44,10 @@ input[type="text"]::-webkit-input-placeholder {
 @media only screen and (max-width: 400px) {
   .table-wrapper,
   .coin-popup-wrapper {
+    -moz-transform: scale(0.7);
+    -webkit-transform: scale(0.7);
+    -o-transform: scale(0.7);
+    -ms-transform: scale(0.7);
     transform: scale(0.7);
     transform-origin: 0 0;
   }

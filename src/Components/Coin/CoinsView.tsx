@@ -13,8 +13,8 @@ const CoinsView = (props: ICoinProps) => {
   };
 
   return (
-    <div className="table-wrapper">
-      <table className="table table-dark">
+    <div className="table-wrapper table-sm-responsive">
+      <table className="table table-sm table-dark table-hover table-borderless">
         <thead>
           <tr>
             <th></th>
