@@ -1,6 +1,7 @@
 import Axios from "axios";
 import { Popup } from "devextreme-react";
 import { useState, useEffect } from "react";
+import { numberWithCommas } from "../../Util/Util";
 
 interface ICoinPopupProps {
   currentCoinId: string;
@@ -58,31 +59,31 @@ const CoinPopup = (props: ICoinPopupProps) => {
             } (${coin.symbol.toUpperCase()})`}</p>
             <p className="h5 col-5">Current Price:</p>
             <p className="h5 col-7">
-              $ {coin.market_data.current_price.cad.toLocaleString()}
+              $ {numberWithCommas(coin.market_data.current_price.cad)}
             </p>
             <p className="h5 col-5">24hr High:</p>
             <p className="h5 col-7 green">
-              $ {coin.market_data.high_24h.cad.toLocaleString()}
+              $ {numberWithCommas(coin.market_data.high_24h.cad)}
             </p>
             <p className="h5 col-5">24hr Low:</p>
             <p className="h5 col-7 red">
-              $ {coin.market_data.low_24h.cad.toLocaleString()}
+              $ {numberWithCommas(coin.market_data.low_24h.cad)}
             </p>
             <p className="h5 col-5">Trading Volume:</p>
             <p className="h5 col-7">
-              $ {coin.market_data.total_volume.cad.toLocaleString()}
+              $ {numberWithCommas(coin.market_data.total_volume.cad)}
             </p>
             <p className="h5 col-5">Market Cap:</p>
             <p className="h5 col-7">
-              $ {coin.market_data.market_cap.cad.toLocaleString()}
+              $ {numberWithCommas(coin.market_data.market_cap.cad)}
             </p>
             <p className="h5 col-5">All Time High:</p>
-            <p className="h5 col-3 green">
-              $ {coin.market_data.ath.cad.toLocaleString()}
+            <p className="h5 col-7 green">
+              $ {numberWithCommas(coin.market_data.ath.cad)}
             </p>
             <p className="h5 col-5">All Time Low:</p>
-            <p className="h5 col-3 red">
-              $ {coin.market_data.atl.cad.toLocaleString()}
+            <p className="h5 col-7 red">
+              $ {numberWithCommas(coin.market_data.atl.cad)}
             </p>
           </div>
         </Popup>

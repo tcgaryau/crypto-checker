@@ -1,5 +1,6 @@
 import React from "react";
 import { ICoin } from "../../Interfaces/ICoin";
+import { numberWithCommas } from "../../Util/Util";
 
 interface ICoinProps {
   filterCoins: ICoin[];
@@ -42,17 +43,13 @@ const CoinsView = (props: ICoinProps) => {
                   />
                 </td>
                 <td>{`${coin.name} (${coin.symbol.toUpperCase()})`}</td>
-                <td>$ {coin.current_price.toFixed(2)}</td>
+                <td>$ {numberWithCommas(coin.current_price)}</td>
                 {coin.price_change_percentage_24h < 0 ? (
-                  <td className="red">
-                    {coin.price_change_percentage_24h.toFixed(2)}%
-                  </td>
+                  <td className="red">{coin.price_change_percentage_24h}%</td>
                 ) : (
-                  <td className="green">
-                    {coin.price_change_percentage_24h.toFixed(2)}%
-                  </td>
+                  <td className="green">{coin.price_change_percentage_24h}%</td>
                 )}
-                <td>{coin.market_cap.toLocaleString()}</td>
+                <td>{numberWithCommas(coin.market_cap)}</td>
               </tr>
             );
           })}

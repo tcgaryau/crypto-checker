@@ -40,9 +40,7 @@ const Home = () => {
 
   return (
     <div className="container">
-      <h1 className="text-center text-white">
-        Welcome to Gary's CryptoChecker
-      </h1>
+      <h1 className="text-center text-white">Gary's CryptoChecker</h1>
       <div className="row container">
         <div className="col-4 col-sm-4 col-md-3 offset-4">
           <input

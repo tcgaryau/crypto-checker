@@ -21,6 +21,12 @@ input[type="text"]:-ms-input-placeholder {
   color: white;
 }
 
+form,
+input,
+label {
+  color: white !important;
+}
+
 .red {
   color: #f00606;
 }

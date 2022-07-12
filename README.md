@@ -10,10 +10,10 @@ Access my site at [GitHub Pages](https://tcgaryau.github.io/crypto-checker/)
 
 - [About The App](#about-the-app)
 - [Screenshots](#screenshots)
+- [Changelogs](#changelogs)
 - [Technologies](#technologies)
 - [Setup](#setup)
 - [Approach](#approach)
-- [Status](#status)
 
 ## About The App
 
@@ -28,6 +28,19 @@ Crypto Checker is an app that that uses cryptogecko api and displays the prices.
     src="./screenshots/mainapp.png"
   >
 </a>
+
+## Changelogs
+
+[0.2.0] - 2022-07-11
+
+- Added Bootstrap 5 and Devextreme for styling
+- Added responsive layout for mobile
+- Changed info to a popup
+- Changed localestring to a regex function to add commas
+
+[0.1.0] - 2022-07-10
+
+- Initial release with limited css
 
 ## Technologies
 
@@ -48,7 +61,3 @@ Crypto Checker is an app that that uses cryptogecko api and displays the prices.
 
 I used ReactJS while mainly styling with Bootstrap 5.
 For the popup I used devextreme's popup component.
-
-## Status
-
-Crypto Checker is still in progress. `Version 2` will be out soon.
