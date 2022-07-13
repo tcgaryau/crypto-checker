@@ -1,13 +1,12 @@
 import "../App.css";
-import Axios from "axios";
 import { useState, useEffect } from "react";
 import CoinsView from "./Coin/CoinsView";
 import { ICoin } from "../Interfaces/ICoin";
 import Refresh from "../Images/refresh.png";
 import CoinPopup from "./Coin/CoinPopup";
 
-import icon from "../Images/news-icon.png";
 import TickerFeed from "./RssFeed/RssFeed";
+import { callAPI } from "../Util/Util";
 
 const Home = () => {
   const [coins, setCoins] = useState<ICoin[]>([]);
@@ -18,8 +17,19 @@ const Home = () => {
   const [feed, setFeed] = useState<any>();
 
   useEffect(() => {
+    const timeToRefresh = 1000 * 60;
+
     refreshPage();
     getRss();
+
+    const timerID = setInterval(() => {
+      refreshPage();
+      getRss();
+    }, timeToRefresh);
+
+    return () => {
+      clearInterval(timerID);
+    };
   }, []);
 
   const filterCoins = coins.filter((coin: ICoin) => {
@@ -33,22 +43,24 @@ const Home = () => {
     setSearchTerm(e.target.value);
   };
 
-  const refreshPage = () => {
+  const refreshPage = async () => {
     setIsLoading(true);
-    Axios.get(
-      "https://api.coingecko.com/api/v3/coins/markets?vs_currency=cad&order=market_cap_desc&per_page=100&page=1&sparkline=false"
-    ).then((response) => {
-      setIsLoading(false);
-      setCoins(response.data);
-    });
+    try {
+      const data = await callAPI(
+        "https://api.coingecko.com/api/v3/coins/markets?vs_currency=cad&order=market_cap_desc&per_page=100&page=1&sparkline=false"
+      );
+      setCoins(data);
+    } catch (e) {
+      console.log(e);
+    }
+    setIsLoading(false);
   };
 
   const getRss = async () => {
     try {
-      const res = await fetch(
+      const { contents } = await callAPI(
         "https://api.allorigins.win/get?url=https://cointelegraph.com/rss"
       );
-      const { contents } = await res.json();
       const xmlDoc = new DOMParser().parseFromString(contents, "text/xml");
       console.log(xmlDoc);
       const items: any = Array.from(xmlDoc.querySelectorAll("item")).map(

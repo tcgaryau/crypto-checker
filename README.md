@@ -18,6 +18,7 @@ Access my site at [GitHub Pages](https://tcgaryau.github.io/crypto-checker/)
 ## About The App
 
 Crypto Checker is an app that that uses cryptogecko api and displays the prices.
+Crypto RSS News retrieved from Cointelegram.
 
 ## Screenshots
 
@@ -30,6 +31,12 @@ Crypto Checker is an app that that uses cryptogecko api and displays the prices.
 </a>
 
 ## Changelogs
+
+[0.3.1] - 2022-07-13
+
+- Removed Axios and created a custom API Call util
+- Added timer to refresh data every 60s.
+- Added a news icon with the RSS Feed.
 
 [0.3.0] - 2022-07-12
 
@@ -54,6 +61,7 @@ Crypto Checker is an app that that uses cryptogecko api and displays the prices.
 - React Router 6
 - Bootstrap 5
 - DevExtreme 22.1
+- [react-fast-marquee](https://www.npmjs.com/package/react-fast-marquee)
 
 ## Setup
 

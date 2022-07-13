@@ -1,7 +1,6 @@
-import Axios from "axios";
 import { Popup } from "devextreme-react";
 import { useState, useEffect } from "react";
-import { numberWithCommas } from "../../Util/Util";
+import { callAPI, numberWithCommas } from "../../Util/Util";
 
 interface ICoinPopupProps {
   currentCoinId: string;
@@ -15,12 +14,15 @@ const CoinPopup = (props: ICoinPopupProps) => {
 
   useEffect(() => {
     if (props.currentCoinId) {
-      Axios.get(
-        `https://api.coingecko.com/api/v3/coins/${props.currentCoinId}`
-      ).then((response) => {
-        setCoinDetails(response.data);
-        console.log(response.data);
-      });
+      try {
+        callAPI(
+          `https://api.coingecko.com/api/v3/coins/${props.currentCoinId}`
+        ).then((data) => {
+          setCoinDetails(data);
+        });
+      } catch (e) {
+        console.log(e);
+      }
     }
   }, [props.currentCoinId]);
 
