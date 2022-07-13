@@ -31,6 +31,10 @@ Crypto Checker is an app that that uses cryptogecko api and displays the prices.
 
 ## Changelogs
 
+[0.3.0] - 2022-07-12
+
+- Added Rss Feed with news from Cointelegraph
+
 [0.2.0] - 2022-07-11
 
 - Added Bootstrap 5 and Devextreme for styling

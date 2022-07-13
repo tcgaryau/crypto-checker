@@ -6,15 +6,20 @@ import { ICoin } from "../Interfaces/ICoin";
 import Refresh from "../Images/refresh.png";
 import CoinPopup from "./Coin/CoinPopup";
 
+import icon from "../Images/news-icon.png";
+import TickerFeed from "./RssFeed/RssFeed";
+
 const Home = () => {
   const [coins, setCoins] = useState<ICoin[]>([]);
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [currentCoinId, setCurrentCoinId] = useState<string>(null!);
   const [isCoinPopupVisible, setIsCoinPopupVisible] = useState<boolean>(false);
+  const [feed, setFeed] = useState<any>();
 
   useEffect(() => {
     refreshPage();
+    getRss();
   }, []);
 
   const filterCoins = coins.filter((coin: ICoin) => {
@@ -24,7 +29,7 @@ const Home = () => {
     );
   });
 
-  const handleSearch = (e: any) => {
+  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(e.target.value);
   };
 
@@ -38,8 +43,29 @@ const Home = () => {
     });
   };
 
+  const getRss = async () => {
+    try {
+      const res = await fetch(
+        "https://api.allorigins.win/get?url=https://cointelegraph.com/rss"
+      );
+      const { contents } = await res.json();
+      const xmlDoc = new DOMParser().parseFromString(contents, "text/xml");
+      console.log(xmlDoc);
+      const items: any = Array.from(xmlDoc.querySelectorAll("item")).map(
+        (item) => ({
+          title: item.querySelector("title")!.textContent,
+          link: item.querySelector("link")!.textContent,
+        })
+      );
+      setFeed(items);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
   return (
     <div className="container">
+      <TickerFeed feed={feed} getRss={getRss} />
       <h1 className="text-center text-white">Gary's CryptoChecker</h1>
       <div className="row container">
         <div className="col-4 col-sm-4 col-md-3 offset-4">
@@ -53,9 +79,13 @@ const Home = () => {
         </div>
         <div className="col-1">
           <img
-            onClick={refreshPage}
+            onClick={() => {
+              refreshPage();
+              getRss();
+            }}
             src={Refresh}
             style={{ height: "45px", cursor: "pointer" }}
+            alt="refreshPage"
           ></img>
         </div>
       </div>
