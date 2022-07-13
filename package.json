@@ -1,6 +1,6 @@
 {
   "name": "crypto-app",
-  "version": "0.1.0",
+  "version": "0.3.1",
   "homepage": "https://tcgaryau.github.io/crypto-checker",
   "private": true,
   "dependencies": {
